@@ -1,12 +1,12 @@
-/** @type {import('next').NextConfig} */
 const withPWA = require('next-pwa')
 
-const nextConfig = withPWA({
-    dest: 'public',
-    register: true,
-    skipWaiting: true,
-    
-  });
-  
-
-module.exports = nextConfig
+module.exports = {
+  ...withPWA({
+    pwa: {
+      dest: 'public',
+    },
+  }),
+  images: {
+    domains: ['links.papareact.com'],
+  },
+}
