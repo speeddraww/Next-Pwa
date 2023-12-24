@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import { SessionProvider } from "../components/SessionProvider"
 import { getServerSession } from 'next-auth'
 import { authOptions } from '../pages/api/auth/[...nextauth]'
+import ClientProvider from '../components/ClientProvider'
 import Login from '../components/Login'
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +17,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   const session = await getServerSession(authOptions)
-  console.log(session)
+  
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -33,6 +34,7 @@ export default async function RootLayout({
             </div>
          
           {/* Client Provider - Notification */}
+          <ClientProvider/>
           <div className="bg-[#343541] flex-1">{children}</div>
           </div>  
 
