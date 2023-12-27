@@ -20,29 +20,25 @@ export default async function RootLayout({
   
   return (
     <html lang="en">
+      <head>
+       
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body className={inter.className}>
         <SessionProvider session={session}>
-          {!session ?(
+          {!session ? (
             <Login/>
-
-          ):(
+          ) : (
             <div className="flex">
-            <div className='bg-[#202123] max-w-xs h-screen overflow-y-auto md:min-[20rem]:'>
-            {/* Sidebar */}
-            <SideBar/>
-  
+              <div className='bg-[#202123] max-w-xs h-screen overflow-y-auto md:min-[20rem]:'>
+                {/* Sidebar */}
+                <SideBar/>
+              </div>
+              {/* Client Provider - Notification */}
+              <ClientProvider/>
+              <div className="bg-[#343541] flex-1">{children}</div>
             </div>
-         
-          {/* Client Provider - Notification */}
-          <ClientProvider/>
-          <div className="bg-[#343541] flex-1">{children}</div>
-          </div>  
-
           )}
-
-        
-
-        
         </SessionProvider>
       </body>
     </html>
